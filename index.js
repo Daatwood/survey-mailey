@@ -5,9 +5,14 @@ const passport = require("passport");
 const bodyParser = require("body-parser");
 const keys = require("./config/keys");
 
-require("./models/User"); // Define model class
-require("./services/passport"); // Load passport
+// Load model classes
+require("./models/User");
+require("./models/Survey");
 
+// Load passport
+require("./services/passport");
+
+// Connect to Db
 mongoose.connect(keys.mongoURI);
 
 const app = express();
@@ -24,6 +29,7 @@ app.use(passport.session());
 // Require and pass app into route
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
+require("./routes/surveyRoutes")(app);
 
 // Serve Production build of React
 if (process.env.NODE_ENV === "production") {
