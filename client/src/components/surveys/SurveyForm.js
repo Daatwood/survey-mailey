@@ -4,21 +4,11 @@ import { reduxForm, Field } from "redux-form";
 import { Link } from "react-router-dom";
 import SurveyField from "./SurveyField";
 import validateEmails from "../../utils/validateEmails";
-
-const FIELDS = [
-  { label: "Survey Title", name: "title", required: true },
-  { label: "Subject Line", name: "subject", required: true },
-  { label: "Email Body", name: "body", required: true },
-  {
-    label: "Recipient List",
-    name: "emails",
-    required: true
-  }
-];
+import formFields from "./formFields";
 
 class SurveyForm extends Component {
   renderFields() {
-    return _.map(FIELDS, ({ label, name }) => {
+    return _.map(formFields, ({ label, name }) => {
       return (
         <Field
           key={name}
@@ -33,18 +23,23 @@ class SurveyForm extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.props.handleSubmit(values => console.log(values))}>
-          <br />
-          {this.renderFields()}
-          <Link to="/surveys" className="red btn-flat white-text">
-            Cancel
-          </Link>
-          <button className="green btn-flat right white-text" type="submit">
-            Next
-            <i className="material-icons right">done</i>
-          </button>
-        </form>
+      <div className="card indigo lighten-5">
+        <div className="card-content ">
+          <span className="card-title teal-text">New Campaign Survey</span>
+          <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
+            {this.renderFields()}
+            <div className="card-action">
+              <Link to="/surveys" className="red btn-flat white-text">
+                Cancel
+                <i className="material-icons right">cancel</i>
+              </Link>
+              <button className="green btn-flat right white-text" type="submit">
+                Next
+                <i className="material-icons right">done</i>
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
@@ -53,9 +48,9 @@ class SurveyForm extends Component {
 function validate(values) {
   const errors = {};
 
-  errors.emails = validateEmails(values.emails || "");
+  errors.recipients = validateEmails(values.recipients || "");
 
-  FIELDS.forEach(({ name, required }) => {
+  formFields.forEach(({ name, required }) => {
     if (!values[name]) errors[name] = "Required";
   });
 
@@ -64,5 +59,6 @@ function validate(values) {
 
 export default reduxForm({
   validate,
-  form: "surveyForm"
+  form: "surveyForm",
+  destroyOnUnmount: false
 })(SurveyForm);
