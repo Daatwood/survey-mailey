@@ -21,8 +21,8 @@ class Header extends Component {
             <Payments />
           </li>,
           <li key="2" style={{ margin: "0 10px" }}>
-            Credits: {this.props.auth.credits}
-            <i className="large material-icons">monetization_on</i>
+            <i className="material-icons left">monetization_on</i>
+            {this.props.auth.credits}
           </li>,
           <li key="3">
             <a href="/api/logout">Logout</a>
