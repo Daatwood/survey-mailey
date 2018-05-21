@@ -18,6 +18,17 @@ module.exports = app => {
     res.send(surveys);
   });
 
+  app.delete("/api/surveys/:surveyId", async (req, res) => {
+    const surveyId = req.params.surveyId;
+    const survey = await Survey.findByIdAndRemove(surveyId).exec();
+    console.log(survey);
+    if (survey) {
+      res.status(200).send(survey);
+    } else {
+      res.status(404).send({ error: `survey ${surveyId} not found.` });
+    }
+  });
+
   app.get("/api/surveys/:surveyId/:choice", (req, res) => {
     res.send("Thanks for voting!");
   });
@@ -54,7 +65,7 @@ module.exports = app => {
       })
       .value();
 
-    res.send({});
+    res.status(200).send({});
   });
 
   app.post("/api/surveys", requireLogin, requireCredits, async (req, res) => {
