@@ -1,0 +1,9 @@
+{
+  "name": "Survey Mailey",
+  "description":
+    "Collect feedback directly from email with an yes or no questionaire.",
+  "repository": "https://github.com/Daatwood/survey-mailey",
+  "logo":
+    "https://raw.githubusercontent.com/Daatwood/survey-mailey/master/client/public/favicon.ico",
+  "keywords": ["mongodb", "express", "react", "node"]
+}
