@@ -4,14 +4,17 @@ const Landing = () => {
   return (
     <div className="card">
       <div className="card-image">
-        <img src="/splash_image.jpg" alt="Landing survey placeholder" />
+        <img
+          src="/splash_image.jpg"
+          alt="paper, coffee, and pen laying on wood"
+        />
       </div>
       <div className="card-content center">
         <span className="card-title indigo-text">
           <h1>Survey Mailey</h1>
         </span>
         <p className="flow-text">
-          Collect feedback from your users with an easy questionaire survey.
+          Collect feedback directly from email with an easy questionaire.
         </p>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import GoogleButton from "react-google-button";
 
 import Payments from "./Payments";
 
@@ -12,7 +13,13 @@ class Header extends Component {
       case false:
         return (
           <li>
-            <a href="/auth/google">Login with Google</a>
+            <GoogleButton
+              type="light"
+              onClick={() => {
+                window.location = "/auth/google";
+              }}
+              style={{ margin: "6px" }}
+            />
           </li>
         );
       default:
