@@ -4,6 +4,8 @@ Collect feedback directly from email with an yes or no questionaire.
 
 Utilizing [Mongoose](http://mongoosejs.com/), [ExpressJS](https://expressjs.com/), [React](https://reactjs.org/), [Node](nodejs.org)
 
+![page preview](https://raw.githubusercontent.com/Daatwood/survey-mailey/master/preview.png "Page Preview")
+
 ## Getting Started
 
 * Node 8.11.1
